@@ -34,6 +34,9 @@ namespace Babylon.Blazor.Chemical
         {
             Engine engine = await BabylonInstance.CreateEngine(CanvasId, true);
             Scene scene = await engine.CreateScene();
+            await scene.ClearColor();
+            await scene.ShowWorldAxis(1000.0f);
+
             //Scene scene = await BabylonInstance.CreateScene(engine);
             //set rotation center
             var cameraTarget = await BabylonInstance.CreateVector3(0, 0, 0);

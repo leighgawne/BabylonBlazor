@@ -138,6 +138,10 @@ export function setAutoRotate(camera, useAutoRotate, idleRotationSpeed) {
     }
 }
 
+export function clearColor(scene) {
+    scene.clearColor = new BABYLON.Color4(0, 0, 0, 1);
+}
+
 export function createHemisphericLight(name, direction, intensity, scene) {
     var light = new BABYLON.HemisphericLight(name, direction, scene);
     light.intensity = intensity;
@@ -168,7 +172,7 @@ export function createSphere(name, options, rotation, position, scene) {
     return mesh;
 }
 
-export function сreateCylinder (name, options, rotation, position, scene) {
+export function сreateCylinder(name, options, rotation, position, scene) {
     //alert(options);123
     //alert("сreateCylinder2");
     var mesh = BABYLON.MeshBuilder.CreateCylinder(name, options, scene);
@@ -385,6 +389,25 @@ export function showWorldAxis(size,scene) {
     var zChar = makeTextPlane("Z", "blue", size / 10);
     zChar.position = new BABYLON.Vector3(0, 0.05 * size, 0.9 * size);
 };
+
+export function loadMeshDemo(scene) {
+    BABYLON.SceneLoader.Append("./mesh/", "RiggedFigure.gltf", scene, function (scene) {
+        // do something with the scene
+    });
+    BABYLON.SceneLoader.Append("./mesh/", "Box.gltf", scene, function (scene) {
+        // do something with the scene
+    });
+    ///BABYLON.SceneLoader.ImportMesh(null, "./mesh/", "GearboxAssy.gltf", scene, function (meshes, particleSystems, skeletons) {
+        // do something with the meshes and skeletons
+        // particleSystems are always null for glTF assets
+    ///});
+}
+
+
+
+
+
+
 //-------------------------------------------------------------------------------------------------
 const isObject = (obj) => {
     return Object.prototype.toString.call(obj) === '[object Object]';

@@ -58,6 +58,7 @@ namespace Babylon.Blazor.Chemical
 
             Engine engine = await BabylonInstance.CreateEngine(CanvasId, true);
             Scene scene = await engine.CreateScene();
+
             //Scene scene = await BabylonInstance.CreateScene(engine);
             //set rotation center
             var cameraTarget = await BabylonInstance.CreateVector3(0, 0, 0);
@@ -101,7 +102,7 @@ namespace Babylon.Blazor.Chemical
             
             _data.MoveCenterToZero();
 
-            foreach (AtomDescription atomDescription in _data.Atoms)
+            /*foreach (AtomDescription atomDescription in _data.Atoms)
             {
                 SphereOptions options = new SphereOptions { Diameter = 1.0 };
                 MeshParameters parameters = new MeshParameters(BabylonInstance) { Options = options };
@@ -111,10 +112,10 @@ namespace Babylon.Blazor.Chemical
                 var sphere = await scene.CreateSphere($"sphere{atomDescription.Name}", parameters);
                 AtomMapper atomMapper = atomMap[atomDescription.Name];
                 sphere.SetMaterial(atomMapper.Material);
-            }
+            }*/
 
 
-            foreach (BondDescription bond in _data.Bonds)
+            /*foreach (BondDescription bond in _data.Bonds)
             {
                 try
                 {
@@ -142,12 +143,14 @@ namespace Babylon.Blazor.Chemical
                 {
                     Console.WriteLine($"{bond}, Max count:{_data.Atoms.Count}  {ex}");
                 }
-            }
+            }*/
 
-            //await BabylonInstance.CreateGrid(5, 5, 0.1, Color.Aqua);
-            //await scene.ShowWorldAxis(6);
+            await scene.LoadMeshDemo();
+            await scene.ClearColor();
+            //await BabylonInstance.CreateGrid(5, 5, 0.1, Color.Gray);
+            await scene.ShowWorldAxis(10);
 
-            await camera.SetAutoRotate(canvas.UseAutoRotate, canvas.IdleRotationSpeed);
+            //await camera.SetAutoRotate(canvas.UseAutoRotate, canvas.IdleRotationSpeed);
             await BabylonInstance.RunRenderLoop(engine, scene);
         }
 

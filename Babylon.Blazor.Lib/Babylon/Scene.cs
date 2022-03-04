@@ -210,6 +210,20 @@ namespace Babylon.Blazor.Babylon
             return new Mesh(jsMesh, BabylonInstance);
         }
 
+        public async Task ClearColor()
+        {
+            await BabylonInstance.InvokeVoidAsync(
+                "clearColor",
+                JsObjRef);
+        }
+
+        public async Task LoadMeshDemo()
+        {
+            await BabylonInstance.InvokeVoidAsync(
+                "loadMeshDemo",
+                JsObjRef);
+        }
+
         /// <summary>
         /// Creates the text plane.
         /// </summary>
