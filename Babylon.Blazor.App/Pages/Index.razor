@@ -1,16 +1,8 @@
 ﻿@page "/"
 @using Babylon.Blazor.Chemical
 
-<h1>Water</h1>
-
 @*<p> Chemical formula of water is H<sub>2</sub>O</p>*@
-<p> Chemical formula of water is <ChemFormulaViewer FormulaText="H2O"/></p>
-<style>
-    .my-component1 {
-        border: 2px dashed red;
-    }
-</style>
-<div class="my-component1" style="height: 600px;">
+<div style="height: 100vh; width: 100%">
    <BabylonCanvas CanvasId="Canvas1" SceneData=@PanelData/>
 </div>
 
